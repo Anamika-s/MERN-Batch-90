@@ -15,3 +15,12 @@ async function hello()
 // console.log(a);
 hello().then(data=>console.log(data)).catch(()=> console.log("some error occured"));
 console.log("This is the last statement")
+console.log("1");
+console.log("1");
+console.log("1");
+console.log("1");
+console.log("1");
+console.log("1");
+console.log("1");
+console.log("1");
+console.log("10");
