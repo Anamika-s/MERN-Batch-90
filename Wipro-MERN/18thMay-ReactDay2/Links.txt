@@ -1,0 +1,7 @@
+Components & Properties > https://reactjs.org/docs/components-and-props.html
+
+properties from parent to child > 
+
+https://www.pluralsight.com/guides/how-to-pass-props-object-from-child-component-to-parent-component
+
+
