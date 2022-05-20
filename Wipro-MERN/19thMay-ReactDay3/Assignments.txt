@@ -1,0 +1,31 @@
+1. Create Function Component Employee with contents 
+Hello , I  am Employee Component 
+
+2.Create Class Component Employee with contents 
+Hello , I  am Employee Component 
+
+3. Pass Id, Name , Department to Employee Function Component
+
+Display them in the Component
+
+4. Pass Id, Name , Department to Employee Class Component
+
+Display them in the Component
+
+5. Store Id, Name , Department in state in Employee Class Component
+
+Display them in the Component
+
+6. Store Id, Name , Department in state in Employee Class Component
+
+Display them in the Component, also update them and display updated values
+
+7. Display Hello OR Bye Message depending upon whether a variable joined contains 1 or 2
+
+
+
+
+
+
+
+

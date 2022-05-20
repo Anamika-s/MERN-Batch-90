@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import 'date-fns';
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 
-function App() {
+export default function MaterialUIPickers() {
+  // The first commit of Material-UI
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <Grid container justifyContent="space-around">
+        <KeyboardDatePicker
+          disableToolbar
+          variant="inline"
+          format="MM/dd/yyyy"
+          margin="normal"
+          id="date-picker-inline"
+          label="Date picker inline"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+        <KeyboardDatePicker
+          margin="normal"
+          id="date-picker-dialog"
+          label="Date picker dialog"
+          format="MM/dd/yyyy"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        />
+        <KeyboardTimePicker
+          margin="normal"
+          id="time-picker"
+          label="Time picker"
+          value={selectedDate}
+          onChange={handleDateChange}
+          KeyboardButtonProps={{
+            'aria-label': 'change time',
+          }}
+        />
+      </Grid>
+    </MuiPickersUtilsProvider>
   );
 }
-
-export default App;
