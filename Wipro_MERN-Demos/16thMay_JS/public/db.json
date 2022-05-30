@@ -1,0 +1,36 @@
+{
+  "movies": [
+    {
+      "id": "1",
+      "title": "The Unique Lama",
+      "releaseDate": "2019",
+      "posterPath": "images/The Unique Lama.jpg"
+    },
+    {
+      "id": "2",
+      "title": "The Cheetah Girls: One World",
+      "releaseDate": "2019",
+      "posterPath": "images/The_Cheetah_Girls_3_One_World.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Lion King",
+      "releaseDate": "2016",
+      "posterPath": "images/Lion King.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Unique 8",
+      "releaseDate": "2016",
+      "posterPath": "images/Unique 8.jpg"
+    }
+  ],
+  "favourites": [
+    {
+      "id": "1",
+      "title": "The Unique Lama",
+      "releaseDate": "2019",
+      "posterPath": "images/The Unique Lama.jpg"
+    }
+  ]
+}

@@ -41,7 +41,6 @@ function btnAddDataClicked()
     "Content-Type" :"application/json"
   },
   body: JSON.stringify(data)
-    
   }
   var url = "https://reqres.in/api/users";
   fetch(url, obj).then(response=>
