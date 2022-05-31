@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JavaScript Assignment</title>
+	<link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+	
+	<style>
+	section {
+		margin: 2em;
+	}
+
+	form {
+		margin: 2em;
+	}
+</style>
+</head>
+<body>
+<button id="btn">Click here to display issue</button>
+<div id="main"></div>	
+
+	<section class="card">
+		<div class="card-header d-flex flex-row">
+			<h4 class="col">Issues Summary</h4>
+			<button type="button" class="btn btn-primary">Open</button>
+		</div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th></th>
+					<th>total</th>
+					<th>open</th>
+					<th>my_issues</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>sagar.patke/bootstrap-assignment</th>
+					<td>5</td>
+					<td>2</td>
+					<td>2</td>
+				</tr>
+				<tr>
+					<th>sagar.patke/javascript-assignment</th>
+					<td>6</td>
+					<td>3</td>
+					<td>1</td>
+				</tr>
+				<tr>
+					<th>sagar.patke/angular-assignment</th>
+					<td>4</td>
+					<td>1</td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<th>sagar.patke/java-assignment</th>
+					<td>7</td>
+					<td>4</td>
+					<td>3</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	
+	<form >
+  <label for="Repository">Choose Repository:</label>
+  <select name="ars" id="repository">
+    <option value="javascript">javascript</option>
+    <option value="boot-strap">boot-strap</option>
+    <option value="java-assignment">java-assignment</option>
+    <option value="angular-assignment">Angular-assignment</option>
+  </select>
+  <br><br>
+  <label for="ct">Choose count:</label>
+  <select name="ct" id="ct">
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+  </select>
+  <br><br>
+  <button onclick=myfunction()>Go!</button>
+</form>
+<button id="btn3">Create issue</button>
+<div id="demo">
+<input type="text" placeholder="Enter title" id="title"/><br />
+<input type="text" placeholder="Enter Repository" id="repo"/><br />
+<input type="text" placeholder="Enter description" id="desc"/><br />
+
+</div>
+<div id="demo2">
+<input type="text" placeholder="Enter repository" id="team"/>
+<button id="btn4">Click</button>
+</div>
+</body>
+	<script>
+function myfunction()
+{
+   var value = document.getElementById("ct");  
+   var getvalue = value.options[value.selectedIndex].value;  
+   var gettext = value.options[value.selectedIndex].text;  
+   
+   alert("count:" +" "+ getvalue ); 
+} 
+</script>
+	
+	<script type="text/javascript" src="/node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script>
+		function getIssueCount(assignmentName, countType) {
+		    // Extracting the row for assignmentName
+		    const trCollection = document.getElementsByTagName('tr');
+
+		    const trArray = Array.from(trCollection);
+
+		    const row = trArray.filter(function(item) {
+		        return item.getElementsByTagName('th')[0].innerHTML === assignmentName;
+		    })[0];
+
+		    // Getting the index of countType in table
+		    const thead = document.getElementsByTagName('thead')[0];
+		    const thArray = Array.from(thead.getElementsByTagName('th'));
+
+		    const th = thArray.filter(function(item) {
+		        return item.innerText === countType;
+		    })[0];
+
+		    const index = thArray.indexOf(th);
+
+		    // Getting the innerText of index column in row
+		    const tdCollection = row.getElementsByTagName('td');
+		    const answer = tdCollection[index - 1].innerText;
+
+		    return answer;
+		}
+
+		function handleFormSubmit(event) {
+			event.preventDefault();
+
+			const repositoryName = document.getElementById('countQueryRepositoryInput').value;
+			const countType = document.getElementById('countQueryIssueType').value;
+
+			const number = getIssueCount(repositoryName, countType);
+
+			const countDiv = document.getElementById('count');
+
+			countDiv.innerHTML = `<strong>${number}</strong>`
+		}
+		
+		
+	</script>
+
+<script>
+var btn=document.getElementById("btn");
+var main=document.getElementById("main");
+btn.addEventListener("click",function(){
+var obj={
+	headers:{
+			"PRIVATE-TOKEN":"b1wpwc7vCZo26JAmBjAv"
+			
+		}
+}
+var thePromise =fetch("https://gitlab-wipro.stackroute.in/api/v4/projects");
+thePromise.then(function(response){
+console.log("fetch promise fufilled!!!");
+					var textPromise =response.json();
+					textPromise
+						.then(function(names){
+						console.log("text promise is fulfilled!!!!!");
+							main.innerHTML=JSON.stringify(names);
+						})
+						.catch(function(error){
+							console.log("error in reading response!!");
+							console.log(error);
+						});
+})
+.catch(function(error){
+		console.log("fetch promise failed!!!");
+		console.log(error);
+		});
+});
+</script>
+<script>
+var btn3=document.getElementById("btn3");
+btn3.addEventListener("click",function(){
+		var issueObj=new Object();
+		var title=document.getElementById("title");
+		var repo=document.getElementById("repo");
+		var desc=document.getElementById("desc");
+		issueObj.title=title.value;
+		issueObj.repository=repo.value;
+		issueObj.description=desc.value;
+		alert("We are ready with issue object which we can send through fetch api");
+		alert(JSON.stringify(issueObj));
+});
+</script>
+<script>
+function mychange(that){
+		alert(that.value);
+		}
+var btn=document.getElementById("btn");
+var demo=document.getElementById("demo");
+btn4.addEventListener("click",function(){
+	var team=document.getElementById("team").value+".json";
+	var thePromise =fetch("http://localhost/wipro/selectDemo/"+team);
+thePromise.then(function(response){
+console.log("fetch promise fufilled!!!");
+					var textPromise =response.json();
+					textPromise
+						.then(function(names){
+						console.log("text promise is fulfilled!!!!!");
+							var select="<select onchange='mychange(this)'>";
+							for(let i=0;i<names.length;i++){
+								select+="<option value='"+names[i]+"'>"+names[i]+"</option>";
+							}
+							select+="</select>";
+							demo2.innerHTML=<br/>;
+							demo2.innerHTML=select;
+						})
+						.catch(function(error){
+							console.log("error in reading response!!");
+							console.log(error);
+						});
+					})
+					.catch(function(error){
+							console.log("fetch promise failed!!!");
+							console.log(error);
+							});
+});
+
+</script>
+
+
+</html>
