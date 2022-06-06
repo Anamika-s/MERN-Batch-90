@@ -14,6 +14,7 @@ const {deposit, withdraw} = bindActionCreators(actionCreators,dispatch);
     <div> 
       <h1> Deposit / Withdraw Money </h1><button className='btn btn-primary'
     onClick={()=>deposit(100)}>  +  </button>
+    
     Actual Amount is :   {amount}
     <button onClick={()=>{dispatch(actionCreators.withdraw(100))}}  className='btn btn-primary'>   - </button></div>
   )
