@@ -1,0 +1,13 @@
+.invalid
+{
+  border:1px solid red
+}
+
+.valid{
+ border: 3px solid green; 
+}
+
+input , textarea{
+  outline: none;
+
+}
